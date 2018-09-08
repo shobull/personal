@@ -20,10 +20,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Serve any static files
-//app.use(express.static(path.join(__dirname, 'client/build')));
-
-app.use('/', indexRouter);
+// app.use('/', indexRouter);
+app.use("/static", express.static(path.join(__dirname, 'client/build')));
 app.use('/api/users', usersRouter);
 app.use(/^(?!\/api\/).*/, frontendRouter);
 
